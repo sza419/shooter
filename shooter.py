@@ -23,6 +23,7 @@ class GamesSprite(sprite.Sprite):
         self.speed = speed
     def reset(self):
         window.blit(self.image, (self.rect.x, self.rect.y))
+
 class Player(GamesSprite):
     def update(self):
         keys = key.get_pressed()
@@ -33,6 +34,7 @@ class Player(GamesSprite):
     def fire(self):
         bullet = Bullet(self.rect.centerx - 15, self.rect.top, 'bullet.png', 7, (30, 30))
         bullets.add(bullet)
+
 class Enemy(GamesSprite):
     def update(self):
         global lost_count
@@ -41,6 +43,7 @@ class Enemy(GamesSprite):
             lost_count += 1
             self.rect.y = 0
             self.rect.x = randint(0, 600)
+
 class Bullet(GamesSprite):
     def update(self):
         self.rect.y -= self.speed
